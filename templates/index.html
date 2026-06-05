@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>DNA Sequence Analyzer</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:40px;
+}
+
+textarea{
+width:500px;
+height:150px;
+}
+
+button{
+padding:10px 20px;
+}
+
+.result{
+margin-top:20px;
+padding:15px;
+border:1px solid black;
+width:500px;
+}
+
+.error{
+color:red;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>DNA Sequence Analyzer</h1>
+
+<form method="POST">
+
+<textarea
+name="sequence"
+placeholder="Paste DNA Sequence Here"></textarea>
+
+<br><br>
+
+<button type="submit">
+Analyze
+</button>
+
+</form>
+
+{% if valid == False %}
+
+<p class="error">
+Invalid DNA Sequence. Use only A, T, G and C.
+</p>
+
+{% endif %}
+
+{% if valid %}
+
+<div class="result">
+
+<h2>Results</h2>
+
+<p><b>Length:</b> {{ length }}</p>
+
+<p><b>A:</b> {{ a_count }}</p>
+
+<p><b>T:</b> {{ t_count }}</p>
+
+<p><b>G:</b> {{ g_count }}</p>
+
+<p><b>C:</b> {{ c_count }}</p>
+
+<p><b>GC Content:</b> {{ gc_content }}%</p>
+
+<hr>
+
+<p><b>Reverse Complement:</b></p>
+<p>{{ reverse_complement }}</p>
+
+<hr>
+
+<p><b>RNA Sequence:</b></p>
+<p>{{ rna_sequence }}</p>
+
+<hr>
+
+<p><b>Protein Sequence:</b></p>
+<p>{{ protein }}</p>
+
+</div>
+
+{% endif %}
+
+</body>
+</html>
